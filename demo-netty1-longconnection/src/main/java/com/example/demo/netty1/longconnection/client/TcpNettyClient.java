@@ -31,7 +31,7 @@ public class TcpNettyClient {
         client.option(ChannelOption.SO_KEEPALIVE, true);
         client.handler(new TcpClientInitalizer());
         try {
-            future = client.connect("localhost", 8080).sync();
+            future = client.connect("localhost", 8891).sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
