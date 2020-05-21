@@ -18,7 +18,7 @@ public class TcpServerInitalizer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) throws Exception {
         ch.pipeline().addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE, Delimiters.lineDelimiter()[0]));
         //添加客户端和服务端之间的心跳检查状态
-        ch.pipeline().addLast(new IdleStateHandler(6, 2, 1, TimeUnit.SECONDS));
+        ch.pipeline().addLast(new IdleStateHandler(6, 4, 3, TimeUnit.SECONDS));
         ch.pipeline().addLast(new TcpServerHandler());
         ch.pipeline().addLast(new StringEncoder());
     }

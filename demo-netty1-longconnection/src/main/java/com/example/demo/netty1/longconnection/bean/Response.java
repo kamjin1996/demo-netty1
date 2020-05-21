@@ -5,10 +5,15 @@ package com.example.demo.netty1.longconnection.bean;
  * 封装响应
  */
 public class Response {
-    private long id;//请求ID
-    private int status;//响应状态
-    private Object content;//响应内容
-    private String msg;//请求返回信息
+    //请求ID
+    private long id;
+
+    //响应状态
+    private int status;
+    //响应内容
+    private Object content;
+    //请求返回信息
+    private String msg;
 
     public long getId() {
         return id;

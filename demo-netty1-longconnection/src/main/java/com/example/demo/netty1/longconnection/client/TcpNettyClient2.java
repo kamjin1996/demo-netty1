@@ -18,9 +18,13 @@ import io.netty.util.internal.logging.InternalLoggerFactory;
 import java.util.Random;
 
 /**
- * Created by jack on 2018/5/5.
+ * @author kam
+ *
+ * <p>
+ *
+ * </p>
  */
-public class TcpNettyClient {
+public class TcpNettyClient2 {
     private static final InternalLogger logger = InternalLoggerFactory.getInstance(TcpNettyClient.class);
 
 
@@ -64,9 +68,9 @@ public class TcpNettyClient {
         return null;
     }
 
-    public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < 10; i++) {
-            new Thread(new UserRequestThread(i)).start();//模拟多线程并发请求
+    public static void main(String[] args) {
+        for (int i = 20; i < 30; i++) {
+            new Thread(new TcpNettyClient.UserRequestThread(i)).start();//模拟多线程并发请求
         }
     }
 
@@ -82,13 +86,13 @@ public class TcpNettyClient {
 
         @Override
         public void run() {
-            synchronized (UserRequestThread.class) {
+            synchronized (TcpNettyClient.UserRequestThread.class) {
                 ClientRequest request = new ClientRequest();
-                request.setCommand("SAVE USER");
+                request.setCommand("SAVE USER2");
                 User user = new User();
                 user.setAge(new Random().nextInt(4) * userId);
                 user.setId(userId);
-                user.setName("张鑫鑫" + userId);
+                user.setName("zxx" + userId);
                 request.setContent(user);
                 //拿到请求的结果
                 Object result = TcpNettyClient.send(request);
@@ -98,5 +102,4 @@ public class TcpNettyClient {
             }
         }
     }
-
 }
