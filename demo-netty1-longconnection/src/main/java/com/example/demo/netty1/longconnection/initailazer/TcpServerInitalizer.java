@@ -1,6 +1,6 @@
 package com.example.demo.netty1.longconnection.initailazer;
 
-import com.example.demo.netty1.longconnection.handler.TcpServerHandler;
+import com.example.demo.netty1.longconnection.handler.io.TcpServerHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;

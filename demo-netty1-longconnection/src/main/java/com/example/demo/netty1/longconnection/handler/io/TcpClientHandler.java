@@ -1,4 +1,4 @@
-package com.example.demo.netty1.longconnection.handler;
+package com.example.demo.netty1.longconnection.handler.io;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.netty1.longconnection.bean.DefaultFuture;

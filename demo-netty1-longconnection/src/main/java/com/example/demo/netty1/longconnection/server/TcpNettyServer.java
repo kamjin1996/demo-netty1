@@ -20,8 +20,8 @@ public class TcpNettyServer {
     static ServerBootstrap server;
 
     static {
-        bossLoopGroup = new NioEventLoopGroup();
-        workLoopGroup = new NioEventLoopGroup();
+        bossLoopGroup = new NioEventLoopGroup(2);
+        workLoopGroup = new NioEventLoopGroup(4);
         server = new ServerBootstrap();
         server.group(bossLoopGroup, workLoopGroup);
         server.channel(NioServerSocketChannel.class);

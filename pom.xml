@@ -22,6 +22,7 @@
 		<module>demo-netty1-filebrowser</module>
 		<module>demo-netty1-serverandclient</module>
 		<module>demo-netty1-longconnection</module>
+		<module>demo-netty1-heartbeat</module>
 	</modules>
 
 	<dependencies>

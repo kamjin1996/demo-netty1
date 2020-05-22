@@ -1,12 +1,14 @@
-package com.example.demo.netty1.longconnection.handler;
+package com.example.demo.netty1.longconnection.handler.io;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.netty1.longconnection.bean.Response;
 import com.example.demo.netty1.longconnection.bean.ServerRequest;
+import com.example.demo.netty1.longconnection.handler.business.TcpUserHandler;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelPipeline;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.internal.logging.InternalLogger;
@@ -31,13 +33,15 @@ public class TcpServerHandler extends ChannelInboundHandlerAdapter {
                 logger.debug("服务端开始读取客户端的请求数据:" + content);
             }
 
-
             //判断服务端和客户端是在能够正常通信的情况下
             // if (Objects.equals("ping", content)) {
             //     ctx.channel().writeAndFlush("ping\r\n");
             //     return;
             // }
-
+            if (content.contains("张鑫鑫6")) {
+                ChannelPipeline pipeline = ctx.pipeline();
+                pipeline.addLast("user_handler", new TcpUserHandler());
+            }
             //获取客户端的请求信息
             ServerRequest request = JSONObject.parseObject(content, ServerRequest.class);
             JSONObject user = (JSONObject) request.getContent();
